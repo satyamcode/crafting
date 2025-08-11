@@ -1,15 +1,14 @@
 # render.yaml
-# This file tells Render how to build and deploy your Spring Boot application.
+# This file tells Render how to build and deploy your Spring Boot application using Docker.
 
 services:
   # This is a web service, which means it has a public URL.
   - type: web
     name: artisan-resin-creations
-    # The correct way to specify the environment for a native runtime.
-    env: java
-    # How to build your application.
-    buildCommand: "./mvnw clean package"
-    # How to start your application after it's built.
-    startCommand: "java -jar target/*.jar"
+    # The environment is now Docker. Render will look for a Dockerfile.
+    env: docker
     # Specify the free instance type.
     plan: free
+    # Health Check Path: Spring Boot Actuator's health endpoint.
+    # Render uses this to know if your application has started successfully.
+    healthCheckPath: /actuator/health
