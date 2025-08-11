@@ -1,0 +1,14 @@
+# render.yaml
+# This file tells Render how to build and deploy your Spring Boot application.
+
+services:
+  # This is a web service, which means it has a public URL.
+  - type: web
+    # A unique name for your service.
+    name: resin-creations
+    # The runtime environment. This is the crucial part.
+    env: java
+    # How to build your application.
+    buildCommand: "./mvnw clean package"
+    # How to start your application after it's built.
+    startCommand: "java -jar target/*.jar"
