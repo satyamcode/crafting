@@ -1,343 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Our Products</title>-->
-<!--    &lt;!&ndash; Tailwind CSS for styling &ndash;&gt;-->
-<!--    <script src="https://cdn.tailwindcss.com"></script>-->
-<!--    &lt;!&ndash; Google Fonts: Inter &ndash;&gt;-->
-<!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
-<!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
-<!--    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">-->
-<!--    <style>-->
-<!--        /* Use Inter as the default font */-->
-<!--        body {-->
-<!--            font-family: 'Inter', sans-serif;-->
-<!--        }-->
-<!--        /* Simple animation for product cards on hover */-->
-<!--        .product-card:hover {-->
-<!--            transform: translateY(-5px);-->
-<!--            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);-->
-<!--        }-->
-<!--    </style>-->
-<!--</head>-->
-<!--<body class="bg-gray-50">-->
-
-<!--&lt;!&ndash; Header &ndash;&gt;-->
-<!--<header class="bg-white shadow-sm">-->
-<!--    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">-->
-<!--        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Our Handcrafted Collection</h1>-->
-<!--        <p class="mt-2 text-lg text-gray-600">Simple, elegant products made with care.</p>-->
-<!--    </div>-->
-<!--</header>-->
-
-<!--&lt;!&ndash; Main Content &ndash;&gt;-->
-<!--<main>-->
-<!--    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">-->
-<!--        &lt;!&ndash; Product Grid &ndash;&gt;-->
-<!--        <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 gap-x-8">-->
-
-<!--            &lt;!&ndash; Loop through each product using Thymeleaf &ndash;&gt;-->
-<!--            <div th:each="product : ${products}" class="group relative bg-white border border-gray-200 rounded-lg flex flex-col overflow-hidden product-card transition-all duration-300">-->
-<!--                <div class="aspect-w-3 aspect-h-2 bg-gray-200 sm:aspect-none sm:h-64">-->
-<!--                    <img th:src="${product.imageUrl}" th:alt="${product.name}" class="w-full h-full object-center object-cover sm:w-full sm:h-full"-->
-<!--                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/FFFFFF?text=Image+Not+Found';">-->
-<!--                </div>-->
-<!--                <div class="flex-1 p-6 flex flex-col justify-between">-->
-<!--                    <div>-->
-<!--                        <h3 class="text-lg font-semibold text-gray-900">-->
-<!--                            <span aria-hidden="true" class="absolute inset-0"></span>-->
-<!--                            <span th:text="${product.name}">Product Name</span>-->
-<!--                        </h3>-->
-<!--                        <p class="mt-2 text-sm text-gray-500" th:text="${product.description}">Product Description.</p>-->
-<!--                    </div>-->
-<!--                    <div class="mt-4 flex items-center justify-between">-->
-<!--                        <p class="text-xl font-bold text-gray-900" th:text="'$' + ${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')}">-->
-<!--                            $0.00-->
-<!--                        </p>-->
-<!--                        &lt;!&ndash; WhatsApp Order Button &ndash;&gt;-->
-<!--                        <a th:href="'https://wa.me/' + ${whatsappNumber} + '?text=' + ${controller.urlEncode('Hello! I would like to order the ' + product.name + '.')}"-->
-<!--                           target="_blank"-->
-<!--                           class="relative flex items-center justify-center rounded-md border border-transparent bg-green-600 py-2 px-4 text-sm font-medium text-white hover:bg-green-700 transition-colors z-10">-->
-<!--                            Order on WhatsApp-->
-<!--                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">-->
-<!--                                <path d="M10.362 2.224A8.334 8.334 0 001.666 10.362a8.333 8.333 0 0011.078 6.52l2.36-1.573a.5.5 0 00.14-.663l-1.573-2.36a.5.5 0 00-.663-.14l-1.94 1.293a5.002 5.002 0 01-6.31-6.31l1.293-1.94a.5.5 0 00-.14-.663l-2.36-1.573a.5.5 0 00-.663.14z" />-->
-<!--                                <path d="M12.501 11.09a.5.5 0 01.499.5v1.5a.5.5 0 01-.5.5h-1.5a.5.5 0 01-.5-.5v-1.5a.5.5 0 01.5-.5h1.5zM10.5 9.5a.5.5 0 00-1 0v4a.5.5 0 001 0v-4zM12 7.5a.5.5 0 01.5.5v4a.5.5 0 01-1 0v-4a.5.5 0 01.5-.5z"/>-->
-<!--                            </svg>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--    </div>-->
-<!--</main>-->
-
-<!--&lt;!&ndash; Footer &ndash;&gt;-->
-<!--<footer class="bg-white">-->
-<!--    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">-->
-<!--        <div class="mt-8 md:mt-0 md:order-1">-->
-<!--            <p class="text-center text-base text-gray-400">&copy; 2024 Your Business Name. All rights reserved.</p>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</footer>-->
-
-<!--</body>-->
-<!--</html>-->
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Artisan Resin Creations</title>-->
-<!--    &lt;!&ndash; Tailwind CSS for styling &ndash;&gt;-->
-<!--    <script src="https://cdn.tailwindcss.com"></script>-->
-<!--    &lt;!&ndash; Google Fonts: Playfair Display & Inter &ndash;&gt;-->
-<!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
-<!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
-<!--    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">-->
-<!--    <style>-->
-<!--        /* Custom font families */-->
-<!--        .font-serif {-->
-<!--            font-family: 'Playfair Display', serif;-->
-<!--        }-->
-<!--        .font-sans {-->
-<!--            font-family: 'Inter', sans-serif;-->
-<!--        }-->
-<!--        /* A subtle background pattern */-->
-<!--        body {-->
-<!--            background-color: #f8f7f4;-->
-<!--            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d4cec3' fill-opacity='0.2'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");-->
-<!--        }-->
-<!--        /* Custom styles for product cards */-->
-<!--        .product-card {-->
-<!--            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;-->
-<!--        }-->
-<!--        .product-card:hover {-->
-<!--            transform: translateY(-8px);-->
-<!--            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);-->
-<!--        }-->
-<!--    </style>-->
-<!--</head>-->
-<!--<body class="font-sans text-stone-800">-->
-
-<!--&lt;!&ndash; Header &ndash;&gt;-->
-<!--<header class="text-center py-16 px-4">-->
-<!--    <h1 class="font-serif text-5xl md:text-6xl font-bold text-stone-900">Artisan Resin Creations</h1>-->
-<!--    <p class="mt-4 text-lg text-stone-600 max-w-2xl mx-auto">Discover unique, handcrafted resin art, where every piece tells a story.</p>-->
-<!--</header>-->
-
-<!--&lt;!&ndash; Main Content &ndash;&gt;-->
-<!--<main>-->
-<!--    <div class="max-w-7xl mx-auto pb-24 px-4 sm:px-6 lg:px-8">-->
-<!--        &lt;!&ndash; Product Grid &ndash;&gt;-->
-<!--        <div class="grid grid-cols-1 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 gap-x-10">-->
-
-<!--            &lt;!&ndash; Loop through each product using Thymeleaf &ndash;&gt;-->
-<!--            <div th:each="product : ${products}" class="group relative bg-white rounded-xl shadow-md flex flex-col overflow-hidden product-card">-->
-<!--                <div class="aspect-w-1 aspect-h-1 bg-stone-200">-->
-<!--                    <img th:src="${product.imageUrl}" th:alt="${product.name}" class="w-full h-full object-cover"-->
-<!--                         onerror="this.onerror=null;this.src='https://placehold.co/600x600/e0e0e0/FFFFFF?text=Image+Not+Found';">-->
-<!--                </div>-->
-<!--                <div class="flex-1 p-6 flex flex-col">-->
-<!--                    <div class="flex-1">-->
-<!--                        <h3 class="font-serif text-2xl font-bold text-stone-800">-->
-<!--                            <span th:text="${product.name}">Product Name</span>-->
-<!--                        </h3>-->
-<!--                        <p class="mt-3 text-base text-stone-600" th:text="${product.description}">Product Description.</p>-->
-<!--                    </div>-->
-<!--                    <div class="mt-6 flex items-center justify-between">-->
-<!--                        <p class="text-2xl font-bold font-serif text-teal-700" th:text="'$' + ${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')}">-->
-<!--                            $0.00-->
-<!--                        </p>-->
-<!--                        &lt;!&ndash; WhatsApp Order Button &ndash;&gt;-->
-<!--                        <a th:href="'https://wa.me/' + ${whatsappNumber} + '?text=' + ${controller.urlEncode('Hello! I would like to order the ' + product.name + '.')}"-->
-<!--                           target="_blank"-->
-<!--                           class="relative inline-flex items-center justify-center rounded-full border border-transparent bg-teal-600 py-2 px-5 text-sm font-semibold text-white hover:bg-teal-700 transition-colors shadow-sm hover:shadow-md z-10">-->
-<!--                            Order Now-->
-<!--                            &lt;!&ndash; WhatsApp Icon &ndash;&gt;-->
-<!--                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.078 1.757-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--    </div>-->
-<!--</main>-->
-
-<!--&lt;!&ndash; Footer &ndash;&gt;-->
-<!--<footer class="bg-white/50 border-t border-stone-200">-->
-<!--    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 text-center">-->
-<!--        <p class="font-serif text-xl text-stone-800">Your Business Name</p>-->
-<!--        <p class="mt-4 text-base text-stone-500">&copy; 2024 Artisan Resin Creations. All rights reserved.</p>-->
-<!--    </div>-->
-<!--</footer>-->
-
-<!--</body>-->
-<!--</html>-->
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Artisan Resin Creations</title>-->
-<!--    &lt;!&ndash; Tailwind CSS for styling &ndash;&gt;-->
-<!--    <script src="https://cdn.tailwindcss.com"></script>-->
-<!--    &lt;!&ndash; Google Fonts: Playfair Display & Inter &ndash;&gt;-->
-<!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
-<!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
-<!--    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">-->
-<!--    <style>-->
-<!--        /* Custom font families */-->
-<!--        .font-serif {-->
-<!--            font-family: 'Playfair Display', serif;-->
-<!--        }-->
-<!--        .font-sans {-->
-<!--            font-family: 'Inter', sans-serif;-->
-<!--        }-->
-<!--        /* A subtle background pattern */-->
-<!--        body {-->
-<!--            background-color: #f8f7f4;-->
-<!--            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d4cec3' fill-opacity='0.2'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");-->
-<!--        }-->
-<!--        /* Custom styles for product cards */-->
-<!--        .product-card {-->
-<!--            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;-->
-<!--        }-->
-<!--        .product-card:hover {-->
-<!--            transform: translateY(-8px);-->
-<!--            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);-->
-<!--        }-->
-
-<!--        /* Styles for the Image Modal */-->
-<!--        .modal-content {-->
-<!--            transition: transform 0.2s ease-in-out;-->
-<!--        }-->
-<!--        .modal-content.zoomed {-->
-<!--            transform: scale(1.75); /* Zoom level */-->
-<!--            cursor: zoom-out;-->
-<!--        }-->
-<!--        .modal-content:not(.zoomed) {-->
-<!--            cursor: zoom-in;-->
-<!--        }-->
-<!--    </style>-->
-<!--</head>-->
-<!--<body class="font-sans text-stone-800">-->
-
-<!--&lt;!&ndash; Header &ndash;&gt;-->
-<!--<header class="text-center py-16 px-4">-->
-<!--    <h1 class="font-serif text-5xl md:text-6xl font-bold text-stone-900">Artisan Resin Creations</h1>-->
-<!--    <p class="mt-4 text-lg text-stone-600 max-w-2xl mx-auto">Discover unique, handcrafted resin art, where every piece tells a story.</p>-->
-<!--</header>-->
-
-<!--&lt;!&ndash; Main Content &ndash;&gt;-->
-<!--<main>-->
-<!--    <div class="max-w-7xl mx-auto pb-24 px-4 sm:px-6 lg:px-8">-->
-<!--        &lt;!&ndash; Product Grid &ndash;&gt;-->
-<!--        <div class="grid grid-cols-1 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 gap-x-10">-->
-
-<!--            &lt;!&ndash; Loop through each product using Thymeleaf &ndash;&gt;-->
-<!--            <div th:each="product : ${products}" class="group relative bg-white rounded-xl shadow-md flex flex-col overflow-hidden product-card">-->
-<!--                <div class="aspect-w-1 aspect-h-1 bg-stone-200 cursor-pointer"-->
-<!--                     th:data-image-url="${product.imageUrl}"-->
-<!--                     onclick="openModal(this)">-->
-<!--                    <img th:src="${product.imageUrl}" th:alt="${product.name}" class="w-full h-full object-cover"-->
-<!--                         onerror="this.onerror=null;this.src='https://placehold.co/600x600/e0e0e0/FFFFFF?text=Image+Not+Found';">-->
-<!--                </div>-->
-<!--                <div class="flex-1 p-6 flex flex-col">-->
-<!--                    <div class="flex-1">-->
-<!--                        <h3 class="font-serif text-2xl font-bold text-stone-800">-->
-<!--                            <span th:text="${product.name}">Product Name</span>-->
-<!--                        </h3>-->
-<!--                        <p class="mt-3 text-base text-stone-600" th:text="${product.description}">Product Description.</p>-->
-<!--                    </div>-->
-<!--                    <div class="mt-6 flex items-center justify-between">-->
-<!--                        <p class="text-2xl font-bold font-serif text-teal-700" th:text="'$' + ${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')}">-->
-<!--                            $0.00-->
-<!--                        </p>-->
-<!--                        &lt;!&ndash; WhatsApp Order Button &ndash;&gt;-->
-<!--                        <a th:href="'https://wa.me/' + ${whatsappNumber} + '?text=' + ${controller.urlEncode('Hello! I would like to order the ' + product.name + '.')}"-->
-<!--                           target="_blank"-->
-<!--                           class="relative inline-flex items-center justify-center rounded-full border border-transparent bg-teal-600 py-2 px-5 text-sm font-semibold text-white hover:bg-teal-700 transition-colors shadow-sm hover:shadow-md z-10">-->
-<!--                            Order Now-->
-<!--                            &lt;!&ndash; WhatsApp Icon &ndash;&gt;-->
-<!--                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.078 1.757-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--    </div>-->
-<!--</main>-->
-
-<!--&lt;!&ndash; Footer &ndash;&gt;-->
-<!--<footer class="bg-white/50 border-t border-stone-200">-->
-<!--    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 text-center">-->
-<!--        <p class="font-serif text-xl text-stone-800">Your Business Name</p>-->
-<!--        <p class="mt-4 text-base text-stone-500">&copy; 2024 Artisan Resin Creations. All rights reserved.</p>-->
-<!--    </div>-->
-<!--</footer>-->
-
-<!--&lt;!&ndash;-->
-<!--  FIXED: Added 'flex' class so it's ready for centering.-->
-<!--  Visibility will now be controlled by adding/removing the 'hidden' class.-->
-<!--&ndash;&gt;-->
-<!--<div id="imageModal" class="fixed z-50 left-0 top-0 w-full h-full overflow-auto bg-black bg-opacity-80 hidden flex items-center justify-center p-4">-->
-<!--    <span class="absolute top-5 right-9 text-white text-5xl font-bold cursor-pointer hover:text-stone-300 transition-colors" onclick="closeModal()">&times;</span>-->
-<!--    <img class="modal-content max-w-[90%] max-h-[90%] object-contain" id="modalImage" onclick="toggleZoom(this)">-->
-<!--</div>-->
-
-<!--<script>-->
-<!--    // Get modal elements-->
-<!--    const modal = document.getElementById('imageModal');-->
-<!--    const modalImg = document.getElementById('modalImage');-->
-
-<!--    /**-->
-<!--     * Opens the modal by reading the image URL from the element's data attribute.-->
-<!--     * @param {HTMLElement} element - The element that was clicked.-->
-<!--     */-->
-<!--    function openModal(element) {-->
-<!--        const imgSrc = element.getAttribute('data-image-url');-->
-<!--        if (imgSrc) {-->
-<!--            // FIXED: Control visibility by removing the 'hidden' class.-->
-<!--            modal.classList.remove('hidden');-->
-<!--            modalImg.src = imgSrc;-->
-<!--            // Reset zoom state every time a new image is opened-->
-<!--            modalImg.classList.remove('zoomed');-->
-<!--        }-->
-<!--    }-->
-
-<!--    /**-->
-<!--     * Closes the image modal.-->
-<!--     */-->
-<!--    function closeModal() {-->
-<!--        // FIXED: Control visibility by adding the 'hidden' class.-->
-<!--        modal.classList.add('hidden');-->
-<!--    }-->
-
-<!--    /**-->
-<!--     * Toggles the 'zoomed' class on the modal image.-->
-<!--     * @param {HTMLElement} img - The image element to zoom.-->
-<!--     */-->
-<!--    function toggleZoom(img) {-->
-<!--        img.classList.toggle('zoomed');-->
-<!--    }-->
-
-<!--    // Add event listener to close the modal when clicking on the background-->
-<!--    window.addEventListener('click', function(event) {-->
-<!--        if (event.target == modal) {-->
-<!--            closeModal();-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
-
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -392,14 +52,28 @@
         input[type=number] {
             -moz-appearance: textfield;
         }
+        /* Thumbnail styles */
+        .thumbnail {
+            transition: border-color 0.2s ease;
+        }
+        .thumbnail.active-thumbnail {
+            border-color: #0d9488; /* Teal color for active thumbnail */
+        }
     </style>
 </head>
 <body class="font-sans text-stone-800">
 
 <!-- Header -->
-<header class="text-center py-16 px-4">
-    <h1 class="font-serif text-5xl md:text-6xl font-bold text-stone-900">Artisan Resin Creations</h1>
-    <p class="mt-4 text-lg text-stone-600 max-w-2xl mx-auto">Discover unique, handcrafted resin art, where every piece tells a story.</p>
+<header class="relative text-center py-20 px-4 overflow-hidden bg-gradient-to-r from-amber-100 via-orange-50 to-amber-100">
+    <div class="relative z-10">
+        <h1 class="font-serif text-5xl md:text-6xl font-bold text-stone-800" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.1);">Artisan Resin Creations</h1>
+        <div class="flex justify-center my-6">
+            <svg width="100" height="20" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 10 H40 L50 2 L60 10 H100" stroke="#c0a080" stroke-width="2"/>
+            </svg>
+        </div>
+        <p class="mt-2 text-lg text-stone-700 max-w-2xl mx-auto">Discover unique, handcrafted resin art, where every piece tells a story.</p>
+    </div>
 </header>
 
 <!-- Main Content -->
@@ -408,12 +82,16 @@
         <!-- Product Grid -->
         <div class="grid grid-cols-1 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 gap-x-10">
 
-            <!-- Loop through each product using Thymeleaf -->
-            <div th:each="product : ${products}" class="group relative bg-white rounded-xl shadow-md flex flex-col overflow-hidden product-card" th:data-product-name="${product.name}">
+            <!-- Loop through each product -->
+            <div th:each="product : ${products}" class="group relative bg-white rounded-xl shadow-md flex flex-col overflow-hidden product-card"
+                 th:data-product-name="${product.name}"
+                 th:data-product-sku="${product.sku}">
+                <!-- The clickable div now stores all image URLs in a comma-separated string -->
                 <div class="aspect-w-1 aspect-h-1 bg-stone-200 cursor-pointer"
-                     th:data-image-url="${product.imageUrl}"
+                     th:data-image-urls="${#strings.listJoin(product.imageUrls, ',')}"
                      onclick="openModal(this)">
-                    <img th:src="${product.imageUrl}" th:alt="${product.name}" class="w-full h-full object-cover"
+                    <!-- Display the first image of the list -->
+                    <img th:src="${product.imageUrls[0]}" th:alt="${product.name}" class="w-full h-full object-cover"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x600/e0e0e0/FFFFFF?text=Image+Not+Found';">
                 </div>
                 <div class="flex-1 p-6 flex flex-col">
@@ -421,13 +99,14 @@
                         <h3 class="font-serif text-2xl font-bold text-stone-800">
                             <span th:text="${product.name}">Product Name</span>
                         </h3>
+                        <p class="mt-1 text-sm text-stone-400" th:text="'SKU: ' + ${product.sku}">SKU: 123-ABC</p>
                         <p class="mt-3 text-base text-stone-600" th:text="${product.description}">Product Description.</p>
                     </div>
                     <div class="mt-6 flex items-center justify-between flex-wrap gap-4">
                         <p class="text-2xl font-bold font-serif text-teal-700" th:text="'$' + ${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')}">
                             $0.00
                         </p>
-                        <!-- NEW: Quantity Selector -->
+                        <!-- Quantity Selector -->
                         <div class="quantity-selector flex items-center border border-stone-300 rounded-full">
                             <button type="button" onclick="changeQuantity(this, -1)" class="px-3 py-1 text-lg font-bold text-stone-600 hover:text-teal-600 transition-colors rounded-l-full">-</button>
                             <input type="number" value="1" min="1" oninput="updateOrderLink(this)" class="w-12 text-center font-semibold text-stone-800 bg-transparent border-l border-r border-stone-300 focus:outline-none">
@@ -438,7 +117,6 @@
                     <a href="#" target="_blank"
                        class="order-link mt-6 w-full text-center relative inline-flex items-center justify-center rounded-full border border-transparent bg-teal-600 py-3 px-5 text-base font-semibold text-white hover:bg-teal-700 transition-colors shadow-sm hover:shadow-md z-10">
                         Order Now
-                        <!-- WhatsApp Icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.078 1.757-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                     </a>
                 </div>
@@ -451,91 +129,101 @@
 <!-- Footer -->
 <footer class="bg-white/50 border-t border-stone-200">
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 text-center">
-        <p class="font-serif text-xl text-stone-800">Your Business Name</p>
-        <p class="mt-4 text-base text-stone-500">&copy; 2024 Artisan Resin Creations. All rights reserved.</p>
+        <p class="font-serif text-xl text-stone-800">Artisan Resin Creations</p>
+        <p class="mt-4 text-base text-stone-500">&copy; 2025 Artisan Resin Creations. All rights reserved.</p>
     </div>
 </footer>
 
 <!-- Image Modal Structure -->
-<div id="imageModal" class="fixed z-50 left-0 top-0 w-full h-full overflow-auto bg-black bg-opacity-80 hidden flex items-center justify-center p-4">
-    <span class="absolute top-5 right-9 text-white text-5xl font-bold cursor-pointer hover:text-stone-300 transition-colors" onclick="closeModal()">&times;</span>
-    <img class="modal-content max-w-[90%] max-h-[90%] object-contain" id="modalImage" onclick="toggleZoom(this)">
+<div id="imageModal" class="fixed z-50 left-0 top-0 w-full h-full overflow-auto bg-black bg-opacity-80 hidden flex-col items-center justify-center p-4">
+    <span class="absolute top-5 right-9 text-white text-5xl font-bold cursor-pointer hover:text-stone-300 transition-colors z-20" onclick="closeModal()">&times;</span>
+    <div class="flex flex-col items-center justify-center w-full h-full">
+        <img class="modal-content max-w-[80%] max-h-[75%] object-contain mb-4" id="modalImage" onclick="toggleZoom(this)">
+        <!-- Thumbnail Gallery -->
+        <div id="thumbnail-gallery" class="flex flex-wrap justify-center gap-2"></div>
+    </div>
 </div>
 
 <script th:inline="javascript">
     // Get modal elements
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
-    // Get WhatsApp number from the model attribute passed by the controller
+    const thumbnailGallery = document.getElementById('thumbnail-gallery');
     const whatsappNumber = /*[[${whatsappNumber}]]*/ 'default_number';
 
-    /**
-     * Opens the modal with the specified image source.
-     * @param {HTMLElement} element - The element that was clicked.
-     */
     function openModal(element) {
-        const imgSrc = element.getAttribute('data-image-url');
-        if (imgSrc) {
-            modal.classList.remove('hidden');
-            modalImg.src = imgSrc;
+        const imageUrlsString = element.getAttribute('data-image-urls');
+        if (imageUrlsString) {
+            const imageUrls = imageUrlsString.split(',');
+
+            modalImg.src = imageUrls[0];
             modalImg.classList.remove('zoomed');
+
+            thumbnailGallery.innerHTML = ''; // Clear previous thumbnails
+
+            imageUrls.forEach((url, index) => {
+                const thumb = document.createElement('img');
+                thumb.src = url;
+                thumb.classList.add('thumbnail', 'h-16', 'w-16', 'object-cover', 'cursor-pointer', 'border-2', 'border-transparent', 'hover:border-teal-500');
+                if (index === 0) {
+                    thumb.classList.add('active-thumbnail');
+                }
+                thumb.onclick = () => changeModalImage(url, thumb);
+                thumbnailGallery.appendChild(thumb);
+            });
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
         }
     }
 
-    /**
-     * Closes the image modal.
-     */
-    function closeModal() {
-        modal.classList.add('hidden');
+    function changeModalImage(newSrc, clickedThumb) {
+        modalImg.src = newSrc;
+        modalImg.classList.remove('zoomed');
+        // Update active thumbnail
+        thumbnailGallery.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active-thumbnail'));
+        clickedThumb.classList.add('active-thumbnail');
     }
 
-    /**
-     * Toggles the 'zoomed' class on the modal image.
-     * @param {HTMLElement} img - The image element to zoom.
-     */
+    function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+
     function toggleZoom(img) {
         img.classList.toggle('zoomed');
     }
 
-    /**
-     * Changes the quantity and updates the order link.
-     * @param {HTMLElement} button - The plus or minus button that was clicked.
-     * @param {number} amount - The amount to change the quantity by (-1 or 1).
-     */
     function changeQuantity(button, amount) {
         const quantityInput = button.parentElement.querySelector('input[type="number"]');
         let currentValue = parseInt(quantityInput.value);
         let newValue = currentValue + amount;
 
         if (newValue < 1) {
-            newValue = 1; // Prevent quantity from going below 1
+            newValue = 1;
         }
         quantityInput.value = newValue;
-        updateOrderLink(quantityInput); // Update the link after changing quantity
+        updateOrderLink(quantityInput);
     }
 
-    /**
-     * Updates the WhatsApp order link based on the quantity input.
-     * @param {HTMLElement} quantityInput - The number input element that changed.
-     */
     function updateOrderLink(quantityInput) {
         const productCard = quantityInput.closest('.product-card');
         const productName = productCard.dataset.productName;
+        const productSku = productCard.dataset.productSku;
         const orderLink = productCard.querySelector('.order-link');
 
         let quantity = parseInt(quantityInput.value);
         if (isNaN(quantity) || quantity < 1) {
             quantity = 1;
-            quantityInput.value = 1; // Correct the input if invalid
+            quantityInput.value = 1;
         }
 
-        const message = `Hello! I would like to order ${quantity} of the ${productName}.`;
+        const message = `Hello! I would like to order ${quantity} of ${productName} (SKU: ${productSku}).`;
         const encodedMessage = encodeURIComponent(message);
 
         orderLink.href = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
     }
 
-    // Initialize all order links when the page loads
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.product-card').forEach(card => {
             const input = card.querySelector('input[type="number"]');
@@ -545,7 +233,6 @@
         });
     });
 
-    // Add event listener to close the modal when clicking on the background
     window.addEventListener('click', function(event) {
         if (event.target == modal) {
             closeModal();
@@ -555,5 +242,3 @@
 
 </body>
 </html>
-
-
