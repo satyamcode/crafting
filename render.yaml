@@ -5,9 +5,9 @@ services:
   # This is a web service, which means it has a public URL.
   - type: web
     # A unique name for your service.
-    name: resin-creations
+    name: artisan-resin-creations
     # The runtime environment. This is the crucial part.
-    env: java
+    runtime: java
     # How to build your application.
     buildCommand: "./mvnw clean package"
     # How to start your application after it's built.
