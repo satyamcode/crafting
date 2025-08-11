@@ -6,8 +6,10 @@ services:
   - type: web
     # A unique name for your service.
     name: artisan-resin-creations
-    # The runtime environment. This is the crucial part.
-    runtime: java
+    # Specify the Java environment and version directly.
+    env: java
+    java:
+      version: 17
     # How to build your application.
     buildCommand: "./mvnw clean package"
     # How to start your application after it's built.
