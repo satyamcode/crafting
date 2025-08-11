@@ -33,4 +33,5 @@ COPY --from=builder /app/target/*.jar app.jar
 EXPOSE 8080
 
 # The command to run when the container starts.
-ENTRYPOINT ["java","-jar","app.jar"]
+# We've added a memory limit to prevent crashes on Render's free tier.
+ENTRYPOINT ["java","-Xmx350m","-jar","app.jar"]
