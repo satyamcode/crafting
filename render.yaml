@@ -4,13 +4,12 @@
 services:
   # This is a web service, which means it has a public URL.
   - type: web
-    # A unique name for your service.
     name: artisan-resin-creations
-    # Specify the Java environment and version directly.
+    # The correct way to specify the environment for a native runtime.
     env: java
-    java:
-      version: 17
     # How to build your application.
     buildCommand: "./mvnw clean package"
     # How to start your application after it's built.
     startCommand: "java -jar target/*.jar"
+    # Specify the free instance type.
+    plan: free
