@@ -1,23 +1,22 @@
 # Stage 1: The Build Stage
-# We use a Maven image to build the application and create the JAR file.
+# We use a Maven image to build the application, which has Maven pre-installed.
 FROM maven:3.8.5-openjdk-17 AS builder
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the Maven wrapper and pom.xml to leverage Docker layer caching.
-# This ensures that dependencies are only re-downloaded if pom.xml changes.
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
+# Copy only the pom.xml first to leverage Docker layer caching.
+# This ensures dependencies are only re-downloaded if pom.xml changes.
+COPY pom.xml .
 
-# Download all the project dependencies
-RUN ./mvnw dependency:go-offline
+# Download all the project dependencies using the 'mvn' command.
+RUN mvn dependency:go-offline
 
 # Copy the rest of the source code
 COPY src ./src
 
-# Build the application, skipping the tests for a faster build
-RUN ./mvnw clean package -DskipTests
+# Build the application using the 'mvn' command, skipping tests for a faster build.
+RUN mvn clean package -DskipTests
 
 
 # Stage 2: The Final Image Stage
