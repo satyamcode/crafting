@@ -1,20 +1,37 @@
-# Use an official OpenJDK 17 runtime as a parent image.
-# This ensures a lightweight and secure base for our application.
-FROM openjdk:17-jdk-slim
+# Stage 1: The Build Stage
+# We use a Maven image to build the application and create the JAR file.
+FROM maven:3.8.5-openjdk-17 AS builder
 
-# Set the working directory inside the container to /app.
-# All subsequent commands will be run from this directory.
+# Set the working directory
 WORKDIR /app
 
-# Copy the executable JAR file from the 'target' directory on your machine
-# into the container's /app directory and rename it to app.jar.
-# The JAR file is created by the 'mvn clean package' command.
-COPY target/*.jar app.jar
+# Copy the Maven wrapper and pom.xml to leverage Docker layer caching.
+# This ensures that dependencies are only re-downloaded if pom.xml changes.
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
 
-# Expose port 8080. This tells Docker that the container will listen on
-# this port at runtime. Spring Boot uses port 8080 by default.
+# Download all the project dependencies
+RUN ./mvnw dependency:go-offline
+
+# Copy the rest of the source code
+COPY src ./src
+
+# Build the application, skipping the tests for a faster build
+RUN ./mvnw clean package -DskipTests
+
+
+# Stage 2: The Final Image Stage
+# We use a lightweight OpenJDK image to run the application.
+FROM openjdk:17-jdk-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the built JAR file from the 'builder' stage into the final image.
+COPY --from=builder /app/target/*.jar app.jar
+
+# Expose port 8080. Render will connect to this port.
 EXPOSE 8080
 
 # The command to run when the container starts.
-# This executes the Spring Boot application.
 ENTRYPOINT ["java","-jar","app.jar"]
