@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Service class to manage product data.
@@ -84,5 +85,20 @@ public class ProductService {
      */
     public List<Product> findAll() {
         return products;
+    }
+
+    /**
+     * Searches for products whose name, description, or SKU contains the query string.
+     * @param query The search term.
+     * @return A list of matching products.
+     */
+    public List<Product> search(String query) {
+        String lowerCaseQuery = query.toLowerCase();
+        return products.stream()
+                .filter(product ->
+                        product.getName().toLowerCase().contains(lowerCaseQuery) ||
+                                product.getDescription().toLowerCase().contains(lowerCaseQuery) ||
+                                product.getSku().toLowerCase().contains(lowerCaseQuery)) // <-- ADDED THIS LINE
+                .collect(Collectors.toList());
     }
 }
