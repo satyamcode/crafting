@@ -1,3 +1,280 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Artisan Resin Creations</title>-->
+<!--    &lt;!&ndash; Tailwind CSS for styling &ndash;&gt;-->
+<!--    <script src="https://cdn.tailwindcss.com"></script>-->
+<!--    &lt;!&ndash; Google Fonts: Playfair Display & Inter &ndash;&gt;-->
+<!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">-->
+<!--    <style>-->
+<!--        /* Custom font families */-->
+<!--        .font-serif {-->
+<!--            font-family: 'Playfair Display', serif;-->
+<!--        }-->
+<!--        .font-sans {-->
+<!--            font-family: 'Inter', sans-serif;-->
+<!--        }-->
+<!--        /* A subtle background pattern */-->
+<!--        body {-->
+<!--            background-color: #f8f7f4;-->
+<!--            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d4cec3' fill-opacity='0.2'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%E3C/g%E3E%3C/svg%3E");-->
+<!--        }-->
+<!--        /* Custom styles for product cards */-->
+<!--        .product-card {-->
+<!--            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;-->
+<!--        }-->
+<!--        .product-card:hover {-->
+<!--            transform: translateY(-8px);-->
+<!--            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);-->
+<!--        }-->
+
+<!--        /* Styles for the Image Modal */-->
+<!--        .modal-content {-->
+<!--            transition: transform 0.2s ease-in-out;-->
+<!--        }-->
+<!--        .modal-content.zoomed {-->
+<!--            transform: scale(1.75); /* Zoom level */-->
+<!--            cursor: zoom-out;-->
+<!--        }-->
+<!--        .modal-content:not(.zoomed) {-->
+<!--            cursor: zoom-in;-->
+<!--        }-->
+<!--        /* Hide the number input arrows */-->
+<!--        input[type=number]::-webkit-inner-spin-button,-->
+<!--        input[type=number]::-webkit-outer-spin-button {-->
+<!--            -webkit-appearance: none;-->
+<!--            margin: 0;-->
+<!--        }-->
+<!--        input[type=number] {-->
+<!--            -moz-appearance: textfield;-->
+<!--        }-->
+<!--        /* Thumbnail styles */-->
+<!--        .thumbnail {-->
+<!--            transition: border-color 0.2s ease;-->
+<!--        }-->
+<!--        .thumbnail.active-thumbnail {-->
+<!--            border-color: #0d9488; /* Teal color for active thumbnail */-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body class="font-sans text-stone-800">-->
+
+<!--&lt;!&ndash; Header &ndash;&gt;-->
+<!--<header class="relative text-center py-12 sm:py-20 px-4 overflow-hidden bg-gradient-to-r from-amber-100 via-orange-50 to-amber-100">-->
+<!--    &lt;!&ndash; UPDATED: Instagram Link with Gradient SVG &ndash;&gt;-->
+<!--    <a href="https://www.instagram.com/resin__magic__kumkum?igsh=MXBjaHhncTIyMnpjZg==" target="_blank" class="absolute top-4 right-4 hover:opacity-80 transition-opacity z-20">-->
+<!--        <svg class="h-8 w-8" viewBox="0 0 24 24" aria-hidden="true">-->
+<!--            <defs>-->
+<!--                <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="100%">-->
+<!--                    <stop offset="0%" style="stop-color:#f9ce34;" />-->
+<!--                    <stop offset="30%" style="stop-color:#ee2a7b;" />-->
+<!--                    <stop offset="100%" style="stop-color:#6228d7;" />-->
+<!--                </linearGradient>-->
+<!--            </defs>-->
+<!--            <path fill="url(#instagram-gradient)" fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.343 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.147 2 12.315 2zm0 1.623c-2.403 0-2.748.01-3.727.055-1.03.048-1.634.2-2.145.407a3.272 3.272 0 00-1.18.884 3.272 3.272 0 00-.884 1.18c-.207.511-.36.115-.407 2.145-.045.979-.055 1.323-.055 3.727s.01 2.748.055 3.727c.048 1.03.2 1.634.407 2.145a3.272 3.272 0 00.884 1.18 3.272 3.272 0 001.18.884c.511.207 1.115.36 2.145.407.979.045 1.323.055 3.727.055s2.748-.01 3.727-.055c1.03-.048 1.634-.2 2.145-.407a3.272 3.272 0 001.18-.884 3.272 3.272 0 00.884-1.18c.207-.511.36-1.115.407-2.145.045-.979.055-1.323.055-3.727s-.01-2.748-.055-3.727c-.048-1.03-.2-1.634-.407-2.145a3.272 3.272 0 00-.884-1.18 3.272 3.272 0 00-1.18-.884c-.511-.207-1.115-.36-2.145-.407-.979-.045-1.323-.055-3.727-.055z" clip-rule="evenodd" />-->
+<!--            <path fill="url(#instagram-gradient)" fill-rule="evenodd" d="M12.315 7.743a4.572 4.572 0 100 9.144 4.572 4.572 0 000-9.144zm0 7.512a2.94 2.94 0 110-5.88 2.94 2.94 0 010 5.88z" clip-rule="evenodd" />-->
+<!--            <path fill="url(#instagram-gradient)" d="M16.881 7.42a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" />-->
+<!--        </svg>-->
+<!--    </a>-->
+<!--    <div class="relative z-10">-->
+<!--        <h1 class="font-serif text-5xl md:text-6xl font-bold text-stone-800" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.1);">Artisan Resin Creations</h1>-->
+<!--        <div class="flex justify-center my-6">-->
+<!--            <svg width="100" height="20" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                <path d="M0 10 H40 L50 2 L60 10 H100" stroke="#c0a080" stroke-width="2"/>-->
+<!--            </svg>-->
+<!--        </div>-->
+<!--        <p class="mt-2 text-lg text-stone-700 max-w-2xl mx-auto">Discover unique, handcrafted resin art, where every piece tells a story.</p>-->
+
+<!--        &lt;!&ndash; Search Form &ndash;&gt;-->
+<!--        <form th:action="@{/}" method="get" class="mt-8 max-w-xl mx-auto">-->
+<!--            <div class="relative">-->
+<!--                <input type="search" name="search" th:value="${searchQuery}" placeholder="Search for products..."-->
+<!--                       class="w-full px-5 py-3 text-base text-stone-700 bg-white/70 border-2 border-stone-300 rounded-full focus:ring-teal-500 focus:border-teal-500 transition-colors shadow-inner">-->
+<!--                <button type="submit" class="absolute inset-y-0 right-0 flex items-center pr-3">-->
+<!--                    <svg class="h-6 w-6 text-stone-500 hover:text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+<!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />-->
+<!--                    </svg>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</header>-->
+
+<!--&lt;!&ndash; Main Content &ndash;&gt;-->
+<!--<main>-->
+<!--    <div class="max-w-7xl mx-auto pb-24 px-4 sm:px-6 lg:px-8">-->
+<!--        &lt;!&ndash; Product Grid &ndash;&gt;-->
+<!--        <div th:if="${not #lists.isEmpty(products)}" class="grid grid-cols-1 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 gap-x-10">-->
+
+<!--            &lt;!&ndash; Loop through each product &ndash;&gt;-->
+<!--            <div th:each="product : ${products}" class="group relative bg-white rounded-xl shadow-md flex flex-col overflow-hidden product-card"-->
+<!--                 th:data-product-name="${product.name}"-->
+<!--                 th:data-product-sku="${product.sku}">-->
+<!--                &lt;!&ndash; UPDATED: Using the padding-top trick for a foolproof 4:3 aspect ratio &ndash;&gt;-->
+<!--                <div class="relative bg-stone-200 cursor-pointer" style="padding-top: 75%;"-->
+<!--                     th:data-image-urls="${#strings.listJoin(product.imageUrls, ',')}"-->
+<!--                     onclick="openModal(this)">-->
+<!--                    &lt;!&ndash; Display the first image of the list &ndash;&gt;-->
+<!--                    <img th:src="${product.imageUrls[0]}" th:alt="${product.name}" class="absolute top-0 left-0 w-full h-full object-cover"-->
+<!--                         onerror="this.onerror=null;this.src='https://placehold.co/600x450/e0e0e0/FFFFFF?text=Image+Not+Found';">-->
+<!--                </div>-->
+<!--                <div class="flex-1 p-6 flex flex-col">-->
+<!--                    <div class="flex-1">-->
+<!--                        <h3 class="font-serif text-2xl font-bold text-stone-800">-->
+<!--                            <span th:text="${product.name}">Product Name</span>-->
+<!--                        </h3>-->
+<!--                        <p class="mt-1 text-sm text-stone-400" th:text="'SKU: ' + ${product.sku}">SKU: 123-ABC</p>-->
+<!--                        <p class="mt-3 text-base text-stone-600" th:text="${product.description}">Product Description.</p>-->
+<!--                    </div>-->
+<!--                    <div class="mt-6 flex items-center justify-between flex-wrap gap-4">-->
+<!--                        <p class="text-2xl font-bold font-serif text-teal-700" th:text="'$' + ${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')}">-->
+<!--                            $0.00-->
+<!--                        </p>-->
+<!--                        &lt;!&ndash; Quantity Selector &ndash;&gt;-->
+<!--                        <div class="quantity-selector flex items-center border border-stone-300 rounded-full">-->
+<!--                            <button type="button" onclick="changeQuantity(this, -1)" class="px-3 py-1 text-lg font-bold text-stone-600 hover:text-teal-600 transition-colors rounded-l-full">-</button>-->
+<!--                            <input type="number" value="1" min="1" oninput="updateOrderLink(this)" class="w-12 text-center font-semibold text-stone-800 bg-transparent border-l border-r border-stone-300 focus:outline-none">-->
+<!--                            <button type="button" onclick="changeQuantity(this, 1)" class="px-3 py-1 text-lg font-bold text-stone-600 hover:text-teal-600 transition-colors rounded-r-full">+</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; WhatsApp Order Button &ndash;&gt;-->
+<!--                    <a href="#" target="_blank"-->
+<!--                       class="order-link mt-6 w-full text-center relative inline-flex items-center justify-center rounded-full border border-transparent bg-teal-600 py-3 px-5 text-base font-semibold text-white hover:bg-teal-700 transition-colors shadow-sm hover:shadow-md z-10">-->
+<!--                        Order Now-->
+<!--                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.078 1.757-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Message for no search results &ndash;&gt;-->
+<!--        <div th:if="${#lists.isEmpty(products)}" class="text-center py-16">-->
+<!--            <h2 class="font-serif text-3xl text-stone-700">No products found</h2>-->
+<!--            <p class="mt-4 text-lg text-stone-500">We couldn't find any products matching your search for "<span th:text="${searchQuery}" class="font-semibold"></span>".</p>-->
+<!--            <a th:href="@{/}" class="mt-6 inline-block text-teal-600 hover:text-teal-800 font-semibold">Clear search and view all products</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</main>-->
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<footer class="bg-white/50 border-t border-stone-200">-->
+<!--    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 text-center">-->
+<!--        <p class="font-serif text-xl text-stone-800">Artisan Resin Creations</p>-->
+<!--        <p class="mt-4 text-base text-stone-500">&copy; 2025 Artisan Resin Creations. All rights reserved.</p>-->
+<!--    </div>-->
+<!--</footer>-->
+
+<!--&lt;!&ndash; Image Modal Structure &ndash;&gt;-->
+<!--<div id="imageModal" class="fixed z-50 left-0 top-0 w-full h-full overflow-auto bg-black bg-opacity-80 hidden flex-col items-center justify-center p-4">-->
+<!--    <span class="absolute top-5 right-9 text-white text-5xl font-bold cursor-pointer hover:text-stone-300 transition-colors z-20" onclick="closeModal()">&times;</span>-->
+<!--    <div class="flex flex-col items-center justify-center w-full h-full">-->
+<!--        <img class="modal-content max-w-[80%] max-h-[75%] object-contain mb-4" id="modalImage" onclick="toggleZoom(this)">-->
+<!--        &lt;!&ndash; Thumbnail Gallery &ndash;&gt;-->
+<!--        <div id="thumbnail-gallery" class="flex flex-wrap justify-center gap-2"></div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script th:inline="javascript">-->
+<!--    // Get modal elements-->
+<!--    const modal = document.getElementById('imageModal');-->
+<!--    const modalImg = document.getElementById('modalImage');-->
+<!--    const thumbnailGallery = document.getElementById('thumbnail-gallery');-->
+<!--    const whatsappNumber = /*[[${whatsappNumber}]]*/ 'default_number';-->
+
+<!--    function openModal(element) {-->
+<!--        const imageUrlsString = element.getAttribute('data-image-urls');-->
+<!--        if (imageUrlsString) {-->
+<!--            const imageUrls = imageUrlsString.split(',');-->
+
+<!--            modalImg.src = imageUrls[0];-->
+<!--            modalImg.classList.remove('zoomed');-->
+
+<!--            thumbnailGallery.innerHTML = ''; // Clear previous thumbnails-->
+
+<!--            imageUrls.forEach((url, index) => {-->
+<!--                const thumb = document.createElement('img');-->
+<!--                thumb.src = url;-->
+<!--                thumb.classList.add('thumbnail', 'h-16', 'w-16', 'object-cover', 'cursor-pointer', 'border-2', 'border-transparent', 'hover:border-teal-500');-->
+<!--                if (index === 0) {-->
+<!--                    thumb.classList.add('active-thumbnail');-->
+<!--                }-->
+<!--                thumb.onclick = () => changeModalImage(url, thumb);-->
+<!--                thumbnailGallery.appendChild(thumb);-->
+<!--            });-->
+
+<!--            modal.classList.remove('hidden');-->
+<!--            modal.classList.add('flex');-->
+<!--        }-->
+<!--    }-->
+
+<!--    function changeModalImage(newSrc, clickedThumb) {-->
+<!--        modalImg.src = newSrc;-->
+<!--        modalImg.classList.remove('zoomed');-->
+<!--        // Update active thumbnail-->
+<!--        thumbnailGallery.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active-thumbnail'));-->
+<!--        clickedThumb.classList.add('active-thumbnail');-->
+<!--    }-->
+
+<!--    function closeModal() {-->
+<!--        modal.classList.add('hidden');-->
+<!--        modal.classList.remove('flex');-->
+<!--    }-->
+
+<!--    function toggleZoom(img) {-->
+<!--        img.classList.toggle('zoomed');-->
+<!--    }-->
+
+<!--    function changeQuantity(button, amount) {-->
+<!--        const quantityInput = button.parentElement.querySelector('input[type="number"]');-->
+<!--        let currentValue = parseInt(quantityInput.value);-->
+<!--        let newValue = currentValue + amount;-->
+
+<!--        if (newValue < 1) {-->
+<!--            newValue = 1;-->
+<!--        }-->
+<!--        quantityInput.value = newValue;-->
+<!--        updateOrderLink(quantityInput);-->
+<!--    }-->
+
+<!--    function updateOrderLink(quantityInput) {-->
+<!--        const productCard = quantityInput.closest('.product-card');-->
+<!--        const productName = productCard.dataset.productName;-->
+<!--        const productSku = productCard.dataset.productSku;-->
+<!--        const orderLink = productCard.querySelector('.order-link');-->
+
+<!--        let quantity = parseInt(quantityInput.value);-->
+<!--        if (isNaN(quantity) || quantity < 1) {-->
+<!--            quantity = 1;-->
+<!--            quantityInput.value = 1;-->
+<!--        }-->
+
+<!--        const message = `Hello! I would like to order ${quantity} of ${productName} (SKU: ${productSku}).`;-->
+<!--        const encodedMessage = encodeURIComponent(message);-->
+
+<!--        orderLink.href = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;-->
+<!--    }-->
+
+<!--    document.addEventListener('DOMContentLoaded', () => {-->
+<!--        document.querySelectorAll('.product-card').forEach(card => {-->
+<!--            const input = card.querySelector('input[type="number"]');-->
+<!--            if (input) {-->
+<!--                updateOrderLink(input);-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+
+<!--    window.addEventListener('click', function(event) {-->
+<!--        if (event.target == modal) {-->
+<!--            closeModal();-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -56,8 +333,16 @@
         .thumbnail {
             transition: border-color 0.2s ease;
         }
-        .thumbnail.active-thumbnail {
+        .thumbnail.active-thumbnail, .card-thumbnail.active-thumbnail {
             border-color: #0d9488; /* Teal color for active thumbnail */
+        }
+        /* Hide scrollbar for thumbnail scroller but keep functionality */
+        .thumbnail-scroller::-webkit-scrollbar {
+            display: none;
+        }
+        .thumbnail-scroller {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
     </style>
 </head>
@@ -65,8 +350,8 @@
 
 <!-- Header -->
 <header class="relative text-center py-12 sm:py-20 px-4 overflow-hidden bg-gradient-to-r from-amber-100 via-orange-50 to-amber-100">
-    <!-- UPDATED: Instagram Link with Gradient SVG -->
-    <a href="https://www.instagram.com/resin__magic__kumkum?igsh=MXBjaHhncTIyMnpjZg==" target="_blank" class="absolute top-4 right-4 hover:opacity-80 transition-opacity z-20">
+    <!-- Instagram Link -->
+    <a href="https://www.instagram.com/your-instagram-handle" target="_blank" class="absolute top-4 right-4 hover:opacity-80 transition-opacity z-20">
         <svg class="h-8 w-8" viewBox="0 0 24 24" aria-hidden="true">
             <defs>
                 <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -114,14 +399,21 @@
             <div th:each="product : ${products}" class="group relative bg-white rounded-xl shadow-md flex flex-col overflow-hidden product-card"
                  th:data-product-name="${product.name}"
                  th:data-product-sku="${product.sku}">
-                <!-- UPDATED: Using the padding-top trick for a foolproof 4:3 aspect ratio -->
+                <!-- Main Image Container -->
                 <div class="relative bg-stone-200 cursor-pointer" style="padding-top: 75%;"
                      th:data-image-urls="${#strings.listJoin(product.imageUrls, ',')}"
                      onclick="openModal(this)">
-                    <!-- Display the first image of the list -->
-                    <img th:src="${product.imageUrls[0]}" th:alt="${product.name}" class="absolute top-0 left-0 w-full h-full object-cover"
-                         onerror="this.onerror=null;this.src='https://placehold.co/600x450/e0e0e0/FFFFFF?text=Image+Not+Found';">
+                    <img th:src="${product.imageUrls[0]}" th:alt="${product.name}" class="main-product-image absolute top-0 left-0 w-full h-full object-cover">
                 </div>
+                <!-- NEW: Scrollable Thumbnail Gallery -->
+                <div th:if="${#lists.size(product.imageUrls) > 1}" class="thumbnail-scroller flex space-x-2 p-2 bg-stone-100 overflow-x-auto">
+                    <img th:each="imageUrl, iterStat : ${product.imageUrls}"
+                         th:src="${imageUrl}"
+                         class="card-thumbnail h-16 w-16 object-cover cursor-pointer border-2 hover:border-teal-500"
+                         th:classappend="${iterStat.index == 0} ? 'active-thumbnail' : 'border-transparent'"
+                         onclick="changeMainImage(this)">
+                </div>
+
                 <div class="flex-1 p-6 flex flex-col">
                     <div class="flex-1">
                         <h3 class="font-serif text-2xl font-bold text-stone-800">
@@ -131,8 +423,8 @@
                         <p class="mt-3 text-base text-stone-600" th:text="${product.description}">Product Description.</p>
                     </div>
                     <div class="mt-6 flex items-center justify-between flex-wrap gap-4">
-                        <p class="text-2xl font-bold font-serif text-teal-700" th:text="'$' + ${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')}">
-                            $0.00
+                        <p class="text-2xl font-bold font-serif text-teal-700" th:text="'₹' + ${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')}">
+                            ₹0.00
                         </p>
                         <!-- Quantity Selector -->
                         <div class="quantity-selector flex items-center border border-stone-300 rounded-full">
@@ -216,6 +508,23 @@
         // Update active thumbnail
         thumbnailGallery.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active-thumbnail'));
         clickedThumb.classList.add('active-thumbnail');
+    }
+
+    // NEW: Function to change the main image on the product card
+    function changeMainImage(thumbElement) {
+        event.stopPropagation(); // Prevent the modal from opening
+
+        const productCard = thumbElement.closest('.product-card');
+        const mainImage = productCard.querySelector('.main-product-image');
+        const allThumbs = productCard.querySelectorAll('.card-thumbnail');
+
+        mainImage.src = thumbElement.src;
+
+        // Update the active state for the thumbnails on the card
+        allThumbs.forEach(thumb => thumb.classList.remove('active-thumbnail', 'border-teal-600'));
+        allThumbs.forEach(thumb => thumb.classList.add('border-transparent'));
+        thumbElement.classList.add('active-thumbnail', 'border-teal-600');
+        thumbElement.classList.remove('border-transparent');
     }
 
     function closeModal() {

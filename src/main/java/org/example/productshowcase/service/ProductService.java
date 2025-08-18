@@ -18,63 +18,69 @@ public class ProductService {
     public ProductService() {
         // Populate the list with sample products, including a list of image URLs for each.
         products.add(new Product(
-                "RES-001",
-                "Handcrafted Wooden Bowl",
-                "A beautiful bowl made from locally sourced maple wood. Perfect for salads or as a decorative piece.",
-                45.00,
+                "RPF-001",
+                "Large Customised Resin Photo Frame",
+                "Resin Photo Frame for Home Decor Personalized Gift Customized with Your Photos &Template 8, 10 ,12 inch sizes, price will change according to size",
+                799.00,
                 List.of(
-                        "https://placehold.co/600x600/a88b67/FFFFFF?text=Wooden+Bowl",
-                        "https://placehold.co/600x600/a88b67/FFFFFF?text=Bowl+Angle+2",
-                        "https://placehold.co/600x600/a88b67/FFFFFF?text=Bowl+Angle+3"
+                        "/images/large_photo_frame_zig_zag.png",
+                        "/images/large_photo_frame_zig_zag_4.png",
+                        "/images/large_photo_frame_zig_zag_2.png",
+                        "/images/large_photo_frame_zig_zag_3.png"
                 )
         ));
         products.add(new Product(
-                "CAN-002",
-                "Artisanal Scented Candle",
-                "Soy wax candle with a calming lavender and chamomile scent. Burns for over 40 hours.",
-                22.50,
+                "RPF-002",
+                "Mini Customised Resin Frame",
+                "This Customised Resin Frame is 4 inches. This is the best resin birthday gift ideas for your " +
+                        "best friend or photo frame gift for your loved ones.",
+                299.00,
                 List.of(
-                        "https://placehold.co/600x600/c7a8c9/FFFFFF?text=Scented+Candle",
-                        "https://placehold.co/600x600/c7a8c9/FFFFFF?text=Candle+Angle+2"
+                        "images/mini_4_inch_frame_1.png",
+                        "images/mini_4_inch_frame_2.jpg"
                 )
         ));
         products.add(new Product(
-                "BAG-003",
-                "Organic Cotton Tote Bag",
-                "Durable and eco-friendly tote bag with a unique hand-printed design. Great for groceries or daily use.",
-                18.00,
+                "RPF-003",
+                "Resin Mini Picture Cutout frame stand",
+                "This Customised Resin Frame is 1.5 inches. photo frame gift for your loved ones.",
+                149.00,
                 List.of(
-                        "https://placehold.co/600x600/e0e0e0/333333?text=Tote+Bag"
+                        "/images/mini_photo_frame_3.png",
+                        "/images/min_photo_frame_1.jpeg",
+                        "/images/mini_photo_frame_2.jpeg"
                 )
         ));
         products.add(new Product(
                 "MUG-004",
-                "Ceramic Coffee Mug",
-                "A sturdy, hand-thrown ceramic mug with a comfortable handle and a speckled glaze finish.",
-                28.00,
+                "Alphabet Resin Keychain with different Flakes – Personalized Initial Keychain",
+                "Elegant handmade resin keychain with real rose flakes, personalized with your chosen initial. " +
+                        "A stylish and thoughtful gift for everyday use or special occasions.",
+                89.00,
                 List.of(
-                        "https://placehold.co/600x600/87a6ba/FFFFFF?text=Ceramic+Mug",
-                        "https://placehold.co/600x600/87a6ba/FFFFFF?text=Mug+Angle+2",
-                        "https://placehold.co/600x600/87a6ba/FFFFFF?text=Mug+Angle+3",
-                        "https://placehold.co/600x600/87a6ba/FFFFFF?text=Mug+Angle+4"
+                        "/images/alphabet_keychain_1.png",
+                        "/images/alphabet_keychain_2.png",
+                        "/images/alphabet_keychain_3.png"
                 )
         ));
         products.add(new Product(
                 "JRN-005",
-                "Leather-bound Journal",
-                "A high-quality journal with 200 lined pages and a soft, genuine leather cover.",
-                35.00,
+                "PersonalizeMe Resin Name Keychain",
+                "Custom resin keychain designed with your name for a unique, stylish touch and shape. " +
+                        "A perfect accessory or personalized gift for everyday use.",
+                99.00,
                 List.of(
-                        "https://placehold.co/600x600/6b5b4a/FFFFFF?text=Journal"
+                        "/images/name_keyChain.png"
                 )
         ));
         products.add(new Product(
                 "PRN-006",
-                "Minimalist Wall Print",
-                "A modern, abstract art print on archival paper. Adds a touch of elegance to any room.",
-                55.00,
+                "Resin Art Round Keychain with Photo",
+                "Beautifully handcrafted resin round keychain customized with your photo. A perfect keepsake to carry memories with you everywhere.",
+                99.00,
                 List.of(
-                        "https://placehold.co/600x600/3d4a55/FFFFFF?text=Wall+Print"
+                        "/images/photo_key_chain.png",
+                        "/images/photo_keychain.png"
                 )
         ));
     }
